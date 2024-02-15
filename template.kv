@@ -1,0 +1,38 @@
+
+<HomeScreen>:
+    FloatLayout:
+        Button:
+            text: 'Start'
+            size_hint: 0.4, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_press: root.manager.transition.direction = 'left'; root.manager.current = 'select_image'
+
+<SelectImageScreen>:
+    FloatLayout:
+        FileChooserIconView:
+            size_hint: 1, 0.9
+            pos_hint: {'y': 0.1}
+            filters: ['*.png', '*.jpg']
+        
+        Button:
+            text: 'Next'
+            size_hint: 0.2, 0.1
+            pos_hint: {'x': 0.8}
+            on_press: root.next_screen()
+
+        Button:
+            text: 'Back'
+            size_hint: 0.2, 0.1
+            on_press: root.manager.transition.direction = 'right'; root.manager.current = 'home'
+
+<FaceDetectionScreen>:
+    FloatLayout:
+        Image:
+            id: image_widget
+            source: ''
+        
+        Button:
+            text: 'Back'
+            size_hint: 0.2, 0.1
+            pos_hint: {'x': 0, 'y': 0}
+            on_press: root.manager.transition.direction = 'right'; root.manager.current = 'select_image'
